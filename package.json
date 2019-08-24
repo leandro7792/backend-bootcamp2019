@@ -1,0 +1,25 @@
+{
+  "name": "meetapp",
+  "version": "1.0.0",
+  "description": "backend do sistema",
+  "main": "index.js",
+  "repository": "https://github.com/leandro7792/meetapp",
+  "author": "Leandro Carvalho",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sucrase": "^3.10.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  },
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  }
+}
