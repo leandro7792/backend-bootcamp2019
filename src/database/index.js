@@ -1,5 +1,8 @@
 import Sequelize from 'sequelize';
 import dabaseConfig from '../config/database';
+import User from '../app/models/User';
+
+const models = [User];
 
 class Database {
   constructor() {
@@ -8,6 +11,8 @@ class Database {
 
   init() {
     this.connection = new Sequelize(dabaseConfig);
+
+    models.map(model => model.init(this.connection));
   }
 }
 
