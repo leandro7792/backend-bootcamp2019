@@ -1,17 +1,18 @@
 import { Router } from 'express';
 
-import User from './app/models/User';
+import UserController from './app/controllers/UserController';
+import SessionController from './app/controllers/SesssionController';
+
+import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
 
-routes.get('/', async (req, res) => {
-  const newUser = await User.create({
-    name: 'Leandro',
-    email: 'leandro@teste.com',
-    password_hash: '123456',
-  });
+routes.get('/', async (req, res) => res.json({ msg: 'API 1.0' }));
 
-  return res.json(newUser);
-});
+routes.post('/users', UserController.store); // cria usuario
+routes.post('/sessions', SessionController.store); // logar usuario
+
+routes.use(authMiddleware); // daqui pra baixo só autenticado
+routes.put('/users', UserController.update); // altera usuario
 
 export default routes;
