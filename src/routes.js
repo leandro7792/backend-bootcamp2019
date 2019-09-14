@@ -25,9 +25,11 @@ routes.get('/meetup', MeetupController.index);
 
 routes.use(authMiddleware); // daqui pra baixo só autenticado
 
-routes.put('/users', UserController.update); // altera usuario
+// altera usuario
+routes.put('/users', UserController.update);
 
-routes.post('/files', upload.single('file'), FileController.store); // upload de arquivos
+// upload de arquivos
+routes.post('/files', upload.single('file'), FileController.store);
 
 // crud manager meetup
 routes.get('/manager/meetup/', ManagerMeetupController.index);
@@ -35,10 +37,10 @@ routes.post('/manager/meetup/', ManagerMeetupController.store);
 routes.put('/manager/meetup/:id', ManagerMeetupController.update);
 routes.delete('/manager/meetup/:id', ManagerMeetupController.delete);
 
-// inscricao e vizualicao nos meetups - usuario
-routes.post('/subscription/:meetup_id', SubscriptionController.store);
+// exibe meetups inscritos do usuario logado
+routes.get('/subscription', SubscriptionController.index);
 
-// pensar depois o que faco kkk
-routes.post('/meetup', MeetupController.store);
+// inscricao nos meetups do usuario logado
+routes.post('/subscription/:meetup_id', SubscriptionController.store);
 
 export default routes;

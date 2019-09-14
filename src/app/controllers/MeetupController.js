@@ -36,10 +36,6 @@ class MeetupController {
 
     return res.json(meetups);
   }
-
-  async store(req, res) {
-    return res.json();
-  }
 }
 
 export default new MeetupController();

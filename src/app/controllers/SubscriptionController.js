@@ -1,9 +1,42 @@
 import { isBefore, startOfHour } from 'date-fns';
+import { Op } from 'sequelize';
 
 import Subscription from '../models/Subscription';
 import Meetup from '../models/Meetup';
+import File from '../models/File';
 
 class SubscriptionController {
+  async index(req, res) {
+    const subscriptions = await Subscription.findAll({
+      where: {
+        user_id: req.userId,
+      },
+      attributes: ['id'],
+      include: [
+        {
+          model: Meetup,
+          as: 'meetup',
+          attributes: ['descricao', 'localizacao', 'data'],
+          where: {
+            data: {
+              [Op.gt]: new Date(),
+            },
+          },
+          include: [
+            {
+              model: File,
+              as: 'banner',
+              attributes: ['url', 'path'],
+            },
+          ],
+        },
+      ],
+      order: [['meetup', 'data', 'ASC']],
+    });
+
+    return res.json(subscriptions);
+  }
+
   async store(req, res) {
     const meetup = await Meetup.findByPk(req.params.meetup_id);
 
