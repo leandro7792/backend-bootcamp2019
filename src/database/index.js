@@ -12,7 +12,7 @@ class Database {
     this.init();
   }
 
-  init () {
+  init() {
     this.connection = new Sequelize(dabaseConfig);
 
     models

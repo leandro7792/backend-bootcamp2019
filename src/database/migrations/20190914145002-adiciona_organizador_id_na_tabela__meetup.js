@@ -13,4 +13,3 @@ module.exports = {
     return queryInterface.removeColumn('meetups', 'organizador_id');
   },
 };
-

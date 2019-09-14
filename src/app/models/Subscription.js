@@ -1,6 +1,7 @@
-import Sequelize, { Model } from 'sequelize';
+import { Model } from 'sequelize';
+
 class Subscription extends Model {
-  static init (sequelize) {
+  static init(sequelize) {
     super.init(
       {},
       {
@@ -11,7 +12,7 @@ class Subscription extends Model {
     return this;
   }
 
-  static associate (models) {
+  static associate(models) {
     this.belongsTo(models.Meetup, { foreignKey: 'meetup_id', as: 'meetup' });
     this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
   }

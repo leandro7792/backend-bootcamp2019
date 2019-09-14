@@ -1,6 +1,7 @@
 import Sequelize, { Model } from 'sequelize';
+
 class Meetup extends Model {
-  static init (sequelize) {
+  static init(sequelize) {
     super.init(
       {
         descricao: Sequelize.STRING,
@@ -15,9 +16,12 @@ class Meetup extends Model {
     return this;
   }
 
-  static associate (models) {
+  static associate(models) {
     this.belongsTo(models.File, { foreignKey: 'banner_id', as: 'banner' });
-    this.belongsTo(models.User, { foreignKey: 'organizador_id', as: 'organizador' });
+    this.belongsTo(models.User, {
+      foreignKey: 'organizador_id',
+      as: 'organizador',
+    });
   }
 }
 

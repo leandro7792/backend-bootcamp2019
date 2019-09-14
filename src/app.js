@@ -12,7 +12,7 @@ class App {
     this.routes();
   }
 
-  middlewares () {
+  middlewares() {
     this.server.use(express.json());
     this.server.use(
       '/files',
@@ -20,7 +20,7 @@ class App {
     );
   }
 
-  routes () {
+  routes() {
     this.server.use(routes);
   }
 }
