@@ -1,3 +1,7 @@
+# arquivos de upload
+tmp/uploads/*
+
+
 # Logs
 logs
 *.log
