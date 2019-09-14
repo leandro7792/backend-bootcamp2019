@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('meetup', {
+    return queryInterface.createTable('meetups', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -15,11 +15,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      descricao: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      date: {
+      data: {
         type: Sequelize.DATE,
         allowNull: false,
       },
@@ -42,12 +38,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
+    return queryInterface.dropTable('meetups');
 
-      Example:
-      return queryInterface.dropTable('users');
-    */
   }
 };
