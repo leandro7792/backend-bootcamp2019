@@ -104,7 +104,7 @@ class SubscriptionController {
     });
 
     /**
-     * fazer o envio do email
+     * fazer o envio do email TESTE GIT
      */
 
     return res.json(subscription);
